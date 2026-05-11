@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-25 12:31:57.455170",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "language",
+  "speaking",
+  "understanding",
+  "reading",
+  "writing"
+ ],
+ "fields": [
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Language",
+   "options": "Abkhaz\nAfar\nAfrikaans\nAkan\nAlbanian\nAmharic\nArabic\nAragonese\nArmenian\nAssamese\nAvaric\nAvestan\nAymara\nAzerbaijani\nBambara\nBashkir\nBasque\nBelarusian\nBengali\nBihari\nBislama\nBosnian\nBreton\nBulgarian\nBurmese\nCatalan\nChamorro\nChechen\nChichewa\nChinese\nChuvash\nCornish\nCorsican\nCree\nCroatian\nCzech\nDanish\nDivehi\nDutch\nDzongkha\nEnglish\nEsperanto\nEstonian\nEwe\nFaroese\nFijian\nFinnish\nFrench\nFula\nGalician\nGeorgian\nGerman\nGreek\nGuaran\u00ed\nGujarati\nHaitian Creole\nHausa\nHebrew\nHerero\nHindi\nHiri Motu\nHungarian\nInterlingua\nIndonesian\nInterlingue\nIrish\nIgbo\nInupiaq\nIdo\nIcelandic\nItalian\nInuktitut\nJapanese\nJavanese\nKalaallisut\nKannada\nKanuri\nKashmiri\nKazakh\nKhmer\nKikuyu\nKinyarwanda\nKirghiz\nKomi\nKongo\nKorean\nKurdish\nKwanyama\nLao\nLatin\nLatvian\nLimburgish\nLingala\nLithuanian\nLuba-Katanga\nLuganda\nLuxembourgish\nMacedonian\nMalagasy\nMalay\nMalayalam\nMaltese\nManx\nM\u0101ori\nMarathi\nMarshallese\nMongolian\nNauru\nNavajo\nNdonga\nNepali\nNorth Ndebele\nNorthern Sami\nNorwegian\nNuosu\nOccitan\nOjibwe\nOld Church Slavonic\nOromo\nOssetian\nOriya\nRundi\nPali\nPashto\nPersian\nPolish\nPortuguese\nPunjabi\nQuechua\nRomanian\nRomansh\nRussian\nSamoan\nSango\nSanskrit\nSardinian\nSerbian\nShona\nSindhi\nSinhala\nSlovak\nSlovene\nSomali\nSouth Ndebele\nSouthern Sotho\nSpanish\nSundanese\nSwahili\nSwati\nSwedish\nTagalog\nTahitian\nTajik\nTamil\nTatar\nTelugu\nThai\nTibetan\nTigrinya\nTonga\nTsonga\nTswana\nTurkish\nTurkmen\nTwi\nUyghur\nUkrainian\nUrdu\nUzbek\nVenda\nVietnamese\nVolap\u00fck\nWalloon\nWelsh\nWestern Frisian\nWolof\nXhosa\nYiddish\nYoruba\nZhuang\nZulu"
+  },
+  {
+   "fieldname": "speaking",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Speaking",
+   "options": "\nA1 - Basic User\nA2 - Basic User\nB1 - Independent User\nB2 - Independent User\nC1 - Proficient User\nC2 - Proficient User"
+  },
+  {
+   "fieldname": "understanding",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Understanding",
+   "options": "\nA1 - Basic User\nA2 - Basic User\nB1 - Independent User\nB2 - Independent User\nC1 - Proficient User\nC2 - Proficient User"
+  },
+  {
+   "fieldname": "reading",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Reading",
+   "options": "\nA1 - Basic User\nA2 - Basic User\nB1 - Independent User\nB2 - Independent User\nC1 - Proficient User\nC2 - Proficient User"
+  },
+  {
+   "fieldname": "writing",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Writing",
+   "options": "\nA1 - Basic User\nA2 - Basic User\nB1 - Independent User\nB2 - Independent User\nC1 - Proficient User\nC2 - Proficient User"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-28 12:03:32.102231",
+ "modified_by": "adminuv@gmail.com",
+ "module": "iBelong",
+ "name": "Language Proficiency",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-11 13:34:45.086254",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_exfp",
+  "course_name",
+  "course_type",
+  "price",
+  "waiting_count",
+  "course_location"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_exfp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "course_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Course Name",
+   "options": "Course",
+   "reqd": 1
+  },
+  {
+   "fieldname": "course_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Course Type",
+   "options": "Free\nPaid",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval:doc.course_type=='Paid';",
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price",
+   "mandatory_depends_on": "eval:doc.course_type=='Paid';"
+  },
+  {
+   "default": "0",
+   "fieldname": "waiting_count",
+   "fieldtype": "Data",
+   "label": "Waiting Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "course_location",
+   "fieldtype": "Data",
+   "label": "Course Location"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-13 06:12:39.474532",
+ "modified_by": "adminuv@gmail.com",
+ "module": "iBelong",
+ "name": "Course Detail SP",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

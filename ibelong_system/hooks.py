@@ -1,12 +1,25 @@
 app_name = "ibelong_system"
 app_title = "Ibelong System"
-app_publisher = "admin"
-app_description = "tst"
-app_email = "admin@gmail.com"
+app_publisher = " "
+app_description = " "
+app_email = "test@test.com"
 app_license = "mit"
+
 
 # Apps
 # ------------------
+# hooks.py
+# ... existing content ...
+app_include_js = [
+    "/assets/ibelong_system/js/model_fix.js"
+]
+
+
+permission_query_conditions = {
+    "Service Provider": "ibelong_system.permissions.get_service_provider_conditions",
+    "Client Progression Details": "ibelong_system.permissions.get_client_progression_conditions",
+    "Client Attendance": "ibelong_system.permissions.get_client_attendance_conditions"
+}
 
 # required_apps = []
 
@@ -145,6 +158,7 @@ app_license = "mit"
 # 	}
 # }
 
+
 # Scheduled Tasks
 # ---------------
 
@@ -241,9 +255,4 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
-# Translation
-# ------------
-# List of apps whose translatable strings should be excluded from this app's translations.
-# ignore_translatable_strings_from = []
 

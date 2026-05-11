@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:institute_name",
+ "creation": "2025-09-10 12:21:02.709947",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tsvm",
+  "first_name",
+  "last_name",
+  "column_break_voxd",
+  "email",
+  "contact_number",
+  "section_break_ywdy",
+  "column_break_kbq8",
+  "institute_name",
+  "institute_address",
+  "column_break_dmpd",
+  "postcode",
+  "course_details_section",
+  "course_detail_table",
+  "amended_from",
+  "rejection_reason",
+  "comment"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_tsvm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "placeholder": "Email Should Registered as user"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name",
+   "options": "Service Provider List",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "institute_address",
+   "fieldtype": "Data",
+   "label": "Institute Address"
+  },
+  {
+   "fieldname": "column_break_voxd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kbq8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dmpd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ywdy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "course_detail_table",
+   "fieldtype": "Table",
+   "label": "Course Detail Table",
+   "options": "Course Detail SP"
+  },
+  {
+   "fieldname": "course_details_section",
+   "fieldtype": "Section Break",
+   "label": " Course Details "
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Service Provider",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "postcode",
+   "fieldtype": "Data",
+   "label": "Postcode"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.workflow_state == \"Rejected\"",
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "read_only_depends_on": "eval:doc.workflow_state == \"Rejected\" && doc.rejection_reason "
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.workflow_state == \"Contract Ended\"",
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Reason For Ending Contract",
+   "read_only_depends_on": "eval:doc.workflow_state == \"Contract Ended\" && doc.comment"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-13 08:37:23.743562",
+ "modified_by": "adminuv@gmail.com",
+ "module": "iBelong",
+ "name": "Service Provider",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

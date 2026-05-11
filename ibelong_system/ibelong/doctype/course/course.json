@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:course_id",
+ "creation": "2025-08-26 07:30:29.392282",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "course_id",
+  "course_name",
+  "next_intake",
+  "column_break_jgwu",
+  "course_detail",
+  "course_level",
+  "course_subject"
+ ],
+ "fields": [
+  {
+   "fieldname": "course_id",
+   "fieldtype": "Data",
+   "label": "Course ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "course_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Course Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "next_intake",
+   "fieldtype": "Data",
+   "label": "Next intake"
+  },
+  {
+   "fieldname": "column_break_jgwu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "course_detail",
+   "fieldtype": "Data",
+   "label": "Course Detail",
+   "options": "\nMandatory\nOptional"
+  },
+  {
+   "fieldname": "course_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Course Level",
+   "options": "Foundation\nStage 1\nStage 2"
+  },
+  {
+   "fieldname": "course_subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Course Subject",
+   "options": "Maltese Language\nCulture orientation\nEnglish Language\nDigital Literacy\nEnglish\nDigital"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-09 10:19:18.626585",
+ "modified_by": "adminuv@gmail.com",
+ "module": "iBelong",
+ "name": "Course",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

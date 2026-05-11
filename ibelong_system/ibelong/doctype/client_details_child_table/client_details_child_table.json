@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-22 07:46:13.004733",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "first_name",
+  "last_name",
+  "file_number",
+  "enrollment_number",
+  "email",
+  "pass"
+ ],
+ "fields": [
+  {
+   "fetch_from": "enrollment_number.first_name",
+   "fieldname": "first_name",
+   "fieldtype": "Read Only",
+   "label": "First Name"
+  },
+  {
+   "fetch_from": "enrollment_number.last_name_1",
+   "fieldname": "last_name",
+   "fieldtype": "Read Only",
+   "label": "Last Name"
+  },
+  {
+   "fetch_from": "enrollment_number.file_number",
+   "fieldname": "file_number",
+   "fieldtype": "Read Only",
+   "label": "File Number"
+  },
+  {
+   "fetch_from": "enrollment_number.email",
+   "fieldname": "email",
+   "fieldtype": "Read Only",
+   "label": "Email"
+  },
+  {
+   "default": "0",
+   "fieldname": "pass",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Pass"
+  },
+  {
+   "fieldname": "enrollment_number",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "label": "Enrollment Number",
+   "options": "Client Progression Details",
+   "read_only_depends_on": "eval:doc.file_number",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-05 12:01:56.294319",
+ "modified_by": "adminuv@gmail.com",
+ "module": "iBelong",
+ "name": "Client Details Child Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

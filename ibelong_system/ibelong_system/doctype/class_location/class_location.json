@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:class_location_code",
+ "creation": "2025-10-27 08:42:04.757036",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "class_location_code",
+  "service_provider"
+ ],
+ "fields": [
+  {
+   "fieldname": "class_location_code",
+   "fieldtype": "Data",
+   "label": "Class Location",
+   "unique": 1
+  },
+  {
+   "fieldname": "service_provider",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Service Provider",
+   "options": "Service Provider"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-07 15:39:48.889547",
+ "modified_by": "Administrator",
+ "module": "Ibelong System",
+ "name": "Class Location",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

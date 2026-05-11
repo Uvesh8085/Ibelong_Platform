@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:select_batch",
+ "creation": "2025-09-22 07:37:21.610518",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "current_date",
+  "service_provider",
+  "start_date_of_course",
+  "teacher",
+  "section_break1",
+  "select_batch",
+  "course_name",
+  "cohort",
+  "end_date_of_course",
+  "section_break2",
+  "client_attendance_child"
+ ],
+ "fields": [
+  {
+   "fieldname": "current_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_provider",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service Provider Institute",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "section_break1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "select_batch",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Batch",
+   "unique": 1
+  },
+  {
+   "fieldname": "course_name",
+   "fieldtype": "Data",
+   "label": "Course Name"
+  },
+  {
+   "fieldname": "section_break2",
+   "fieldtype": "Section Break",
+   "read_only": 1
+  },
+  {
+   "fieldname": "client_attendance_child",
+   "fieldtype": "Table",
+   "label": "Client Details",
+   "options": "Client Details Child Table"
+  },
+  {
+   "fieldname": "cohort",
+   "fieldtype": "Link",
+   "label": "Cohort",
+   "options": "Cohort Details"
+  },
+  {
+   "fieldname": "end_date_of_course",
+   "fieldtype": "Date",
+   "label": "End Date of Course"
+  },
+  {
+   "fieldname": "start_date_of_course",
+   "fieldtype": "Date",
+   "label": "Start Date of Course"
+  },
+  {
+   "fieldname": "teacher",
+   "fieldtype": "Data",
+   "label": "Teacher Associated"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-22 12:33:43.321673",
+ "modified_by": "adminuv@gmail.com",
+ "module": "iBelong",
+ "name": "Batch Details",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
