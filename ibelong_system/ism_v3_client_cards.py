@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function(){
       if (d.referral_comments) html += '<p class="mb-1">Referral Comments: ' + esc(d.referral_comments) + '</p>';
     }
     html += '<hr><p class="mb-0"><strong>OTP Confirmation:</strong> ' +
-      (d.client_confirmed ? ('Confirmed' + (d.client_confirmed_on ? ' on ' + esc(d.client_confirmed_on) : '')) : 'Not yet confirmed') +
+      (d.client_confirmed ? ('Confirmed' + (d.client_confirmed_on ? ' on ' + esc(d.client_confirmed_on.slice(0,16)) : '')) : 'Not yet confirmed') +
       '</p>';
 
     if (d.booking_status === "Pending Client Review") {
