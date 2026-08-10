@@ -4,6 +4,50 @@ from datetime import datetime
 import pytz
 
 
+def _add_booking_row(doc, slot_date, slot_time, officer_name, status):
+    """Append a new appointment to the ism_bookings child table.
+
+    Clients may book more than one ISM, so every booking gets its own row.
+    The single ism_slot / selected_time fields are still maintained above so
+    existing pages and migrated data keep working.
+
+    A row is only added when we actually know the appointment date - otherwise
+    an empty Time value is coerced to "now" and we end up storing a blank
+    booking.
+    """
+    if not slot_date:
+        return
+
+    doc.append("ism_bookings", {
+        "slot_date": slot_date,
+        "slot_time": slot_time,
+        "officer_name": officer_name,
+        "booking_status": status,
+        "support_need": doc.get("ism_support_need"),
+    })
+
+
+def _update_latest_booking(doc, status, slot_date=None, slot_time=None, officer_name=None):
+    """Update the most recent booking row (used for reschedule / cancel).
+
+    Falls back to appending a row when the client has no rows yet, so a
+    reschedule or cancellation is never silently lost.
+    """
+    rows = doc.get("ism_bookings") or []
+    if not rows:
+        _add_booking_row(doc, slot_date, slot_time, officer_name, status)
+        return
+
+    row = rows[-1]
+    row.booking_status = status
+    if slot_date:
+        row.slot_date = slot_date
+    if slot_time:
+        row.slot_time = slot_time
+    if officer_name:
+        row.officer_name = officer_name
+
+
 @frappe.whitelist(allow_guest=True)
 def create_client():
     try:
@@ -105,11 +149,45 @@ def create_client():
         # -----------------------------
         doc = frappe.get_doc("Client Details", client_name)
 
+        # Client clarification (07/08/2026): a client may book multiple ISMs
+        # over time, but never more than one ACTIVE case at once. The ISM tab
+        # is hidden on the profile while a case is active (see v3-progle-page),
+        # but the client could still reach an old MS Bookings link (e.g. from
+        # a saved email) and book again - so this is enforced here too. If an
+        # active booking already exists, skip the update entirely: nothing on
+        # Client Details changes and no new row is appended.
+        existing_active = next(
+            (r for r in doc.ism_bookings if r.booking_status not in ("Case Closed", "ISM Cancelled")),
+            None,
+        )
+        if existing_active:
+            frappe.log_error(
+                "BOOKING SKIPPED - ACTIVE ISM ALREADY EXISTS",
+                {"client": doc.name, "active_booking": existing_active.name, "status": existing_active.booking_status},
+            )
+            return {
+                "status": "skipped",
+                "message": "Client already has an active ISM booking. Please complete the current active ISM meeting first.",
+                "client": doc.name,
+            }
+
+        # NISC enhancement (30/07/2026): ISM booking must NEVER change the
+        # client's course-progress status (doc.status). A client can book an
+        # ISM at any point - right after registration, mid-course, or after
+        # graduating - and their status must keep reflecting their course
+        # progress only. ISM state lives entirely in the ism_bookings child
+        # table (booking_status) instead.
         doc.isr_officer_name = officer_name
         doc.ism_slot = ism_slot_date
         doc.selected_time = ism_slot_time
         doc.isr_status = "ISM Meeting Scheduled"
-        doc.status = "ISM Meeting Scheduled"
+
+        # Marks that this client has engaged with ISM at least once. Distinct
+        # from doc.status (course progress), which is never touched here.
+        doc.integration_support = 1
+
+        # Each booking is kept as its own row so a client can book several ISMs
+        _add_booking_row(doc, ism_slot_date, ism_slot_time, officer_name, "ISM Scheduled")
 
         doc.save(ignore_permissions=True)
         frappe.db.commit()
@@ -242,11 +320,14 @@ def reschedule_meeting():
         # -----------------------------
         doc = frappe.get_doc("Client Details", client_name)
 
+        # See create_client(): ISM booking never touches doc.status.
         doc.isr_officer_name = officer_name
         doc.ism_slot = ism_slot_date
         doc.ism_slot_time = ism_slot_time
         doc.isr_status = "ISM Meeting Rescheduled"
-        doc.status = "ISM Meeting Rescheduled"
+
+        # A reschedule moves the latest appointment rather than adding a new one
+        _update_latest_booking(doc, "ISM Scheduled", ism_slot_date, ism_slot_time, officer_name)
 
         doc.save(ignore_permissions=True)
         frappe.db.commit()
@@ -335,10 +416,11 @@ def cancel_meeting():
                 frappe.log_error("DATE PARSE ERROR", start_time_raw)
 
         # -----------------------------
-        # CANCEL STATUS (ALWAYS SET)
+        # CANCEL STATUS (ALWAYS SET) - see create_client(): never touches doc.status
         # -----------------------------
-        doc.status = "Meeting Cancelled"
         doc.isr_status = "Meeting Cancelled"
+
+        _update_latest_booking(doc, "ISM Cancelled")
 
         doc.save(ignore_permissions=True)
         frappe.db.commit()

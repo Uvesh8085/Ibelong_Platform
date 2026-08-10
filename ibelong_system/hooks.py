@@ -5,6 +5,20 @@ app_description = " "
 app_email = "test@test.com"
 app_license = "mit"
 
+fixtures = [
+    {"dt": "Role", "filters": [["role_name", "in", ["NISC User"]]]},
+    {"dt": "Workspace", "filters": [["name", "in", ["NISC Dashboard"]]]},
+    {"dt": "Server Script", "filters": [["name", "in", [
+        "Submit Stage2 Culture Only",
+        "Repeater Post",
+        "Status change on save"
+    ]]]},
+    {"dt": "Web Page", "filters": [["name", "in", ["demo-clinet-profile"]]]}
+]
+
+role_home_page = {
+    "NISC User": "/app/nisc-dashboard"
+}
 
 # Apps
 # ------------------
@@ -18,7 +32,20 @@ app_include_js = [
 permission_query_conditions = {
     "Service Provider": "ibelong_system.permissions.get_service_provider_conditions",
     "Client Progression Details": "ibelong_system.permissions.get_client_progression_conditions",
-    "Client Attendance": "ibelong_system.permissions.get_client_attendance_conditions"
+    "Client Attendance": "ibelong_system.permissions.get_client_attendance_conditions",
+    "Batch Details": "ibelong_system.permissions.get_batch_details_conditions"
+}
+
+doc_events = {
+    # Silently remove User Permissions for doctypes whose visibility
+    # is already controlled by permission_query_conditions (see permissions.py).
+    "User Permission": {
+        "after_insert": "ibelong_system.permissions.block_managed_doctype_user_permissions"
+    },
+    # Only NISC staff may close an ISM case, and only from a valid prior status.
+    "Client Details": {
+        "validate": "ibelong_system.ism_review.validate_client_details"
+    }
 }
 
 # required_apps = []
