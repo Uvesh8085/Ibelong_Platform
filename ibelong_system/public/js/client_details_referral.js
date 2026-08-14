@@ -131,8 +131,21 @@ function load_referral_section(frm) {
 			const $section  = $(build_referral_html(frm, referrals));
 
 			/* -------------------------------------------------------
-			   Strategy 1: find the "Integration Support" section-head
-			   and append into that section's body.
+			   Strategy 0 (preferred): insert directly after the ISM
+			   Bookings table's own wrapper, so Referrals always render
+			   right below ISM Bookings regardless of whatever else is
+			   in the surrounding "Integration Support" section (e.g.
+			   Employment/Participation fields, which should end up
+			   below both tables, not between them).
+			------------------------------------------------------- */
+			if (frm.fields_dict.ism_bookings && frm.fields_dict.ism_bookings.wrapper) {
+				$(frm.fields_dict.ism_bookings.wrapper).after($section);
+				return;
+			}
+
+			/* -------------------------------------------------------
+			   Strategy 1 (fallback): find the "Integration Support"
+			   section-head and append into that section's body.
 			------------------------------------------------------- */
 			let inserted = false;
 
